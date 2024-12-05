@@ -2,10 +2,26 @@
 
 Generation and visualization of category trees
 
+<br>
+
 ## Quick Start
+
+Check out how to install dependencies in the section below.
+
+To run the example, type the following in the console:
+
+```console
+python3 main.py
+```
+
+<br>
+
+## Installation dependencies
 
 >[!NOTE]
 >Make sure you have python and pip installed
+
+<br>
 
 ### On linux:
 
@@ -23,6 +39,7 @@ Generation and visualization of category trees
 >chmod +x install_dependencies.sh
 >```
 
+<br>
 
 ### On windows:
 
