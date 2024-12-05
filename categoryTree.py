@@ -1,4 +1,19 @@
 import random
+
+class CategoryTreeIterator:
+    def __init__(self, root):
+        self.root = root
+        self.stack = [{"node":root, "depth":0}]
+
+    def __next__(self):
+        if(len(self.stack) > 0):
+            next = self.stack.pop()
+            self.stack.extend([{"node": child, "depth":next["depth"] + 1} for child in next["node"]["children"][::-1]])
+            return next
+        else:
+            raise StopIteration
+
+
 class CategoryTree:
     def __init__(self, max_depth = 2, max_children = 2, faker = None, title="Tree"):
         self.title = title
@@ -28,22 +43,21 @@ class CategoryTree:
                 queue.insert(0, child)
                 next["children"].append(child)
 
+    def __iter__(self):
+        return CategoryTreeIterator(self.root)
+
     def __str__(self):
         out = "-" * (self.max_depth + 20)
         out += "\n" + self.title + "\n"
         out += "-" * (self.max_depth + 20) + "\n"
-        stack = [{"node":self.root, "depth":0}]
-        while(len(stack) > 0):
-            next = stack.pop()
+        for next in self:
             depth = next["depth"]
             next = next["node"]
             out += "| " * depth + next["name"] + "\n"
 
-            depth += 1
-            for child in next["children"][::-1]:
-                stack.append({"node":child, "depth":depth})
-
         return out
+    
+
     
     def __repr__(self):
         return self.__str__()
