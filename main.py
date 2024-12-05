@@ -6,7 +6,7 @@ from categoryTree import CategoryTree
 
 
 def main():
-    tree = CategoryTree(10, 2, Faker())
+    tree = CategoryTree(10, 2, Faker(), 'Category Tree')
    
     print(tree)
 

@@ -1,6 +1,7 @@
 import random
 class CategoryTree:
-    def __init__(self, max_depth = 2, max_children = 2, faker = None):
+    def __init__(self, max_depth = 2, max_children = 2, faker = None, title="Tree"):
+        self.title = title
         self.max_depth = max_depth
         self.max_children = max_children
 
@@ -28,7 +29,9 @@ class CategoryTree:
                 next["children"].append(child)
 
     def __str__(self):
-        out = ""
+        out = "-" * (self.max_depth + 20)
+        out += "\n" + self.title + "\n"
+        out += "-" * (self.max_depth + 20) + "\n"
         stack = [{"node":self.root, "depth":0}]
         while(len(stack) > 0):
             next = stack.pop()
@@ -60,3 +63,4 @@ class CategoryTree:
                 dot.edge(nextStr, str(i))
                 i += 1
         dot.render(out_filepath).replace('\\', '/')
+        print("Tree rendered to", out_filepath)
