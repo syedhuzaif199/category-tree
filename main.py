@@ -12,7 +12,7 @@ def main():
 
     dot = graphviz.Digraph(comment='Named Tree')
 
-    named_tree.render_tree_graphViz(dot, 'output/named-tree.svg')
+    named_tree.render_tree_graphViz(dot, 'output/named-tree.gv')
     
     # tree without faker
 
@@ -22,7 +22,7 @@ def main():
 
     print(nameless_tree)
 
-    nameless_tree.render_tree_graphViz(dot, "output/nameless-tree.svg")
+    nameless_tree.render_tree_graphViz(dot, "output/nameless-tree.gv")
     
 
 if __name__ == "__main__":
