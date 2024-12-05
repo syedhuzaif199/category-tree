@@ -6,15 +6,24 @@ from categoryTree import CategoryTree
 
 
 def main():
-    tree = CategoryTree(10, 2, Faker(), 'Category Tree')
+    named_tree = CategoryTree(10, 2, Faker(), 'Named Tree')
    
-    print(tree)
+    print(named_tree)
 
-    dot = graphviz.Digraph(comment='Category Tree')
+    dot = graphviz.Digraph(comment='Named Tree')
 
-    tree.render_tree_graphViz(dot, 'doctest-output/category-tree.gv')
+    named_tree.render_tree_graphViz(dot, 'output/named-tree.svg')
     
+    # tree without faker
 
+    dot = graphviz.Digraph(comment='Nameless Tree')
+
+    nameless_tree = CategoryTree(10, 2, None, 'Nameless Tree')
+
+    print(nameless_tree)
+
+    nameless_tree.render_tree_graphViz(dot, "output/nameless-tree.svg")
+    
 
 if __name__ == "__main__":
     main()
